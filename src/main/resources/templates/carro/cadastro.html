@@ -1,43 +1,108 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{layout}">
   <head>
-    <title>Cadastro de Carro</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Cadastro de Carro</h1>
-    <form th:action="@{/carros/salvar}" th:object="${carro}" method="post">
-      <label>Marca:</label>
-      <input type="text" th:field="*{marca}" /> <br />
-      <label>Modelo:</label>
-      <input type="text" th:field="*{modelo}" /> <br />
-      <label>Ano:</label>
-      <input type="number" th:field="*{ano}" /> <br />
-      <label>Cor:</label>
-      <input type="text" th:field="*{cor}" /> <br />
-      <label>Preço:</label>
-      <input type="number" step="0.01" th:field="*{preco}" /> <br />
-      <label>Quilometragem:</label>
-      <input type="number" th:field="*{quilometragem}" /> <br />
-      <label>Câmbio:</label>
-      <input type="text" th:field="*{cambio}" /> <br />
-      <label>Combustível:</label>
-      <input type="text" th:field="*{combustivel}" /> <br />
-      <label>Placa:</label>
-      <input type="text" th:field="*{placa}" /> <br />
-      <label>Descrição:</label>
-      <input type="text" th:field="*{descricao}" /> <br />
-      <label>Anunciante:</label>
-      <select th:field="*{anunciante}" required>
-        <option
-          th:each="anunciante : ${anunciantes}"
-          th:value="${anunciante}"
-          th:text="${anunciante.nome}"
-        ></option>
-      </select>
-      <br />
-      <button type="submit">Salvar</button>
-    </form>
-    <a th:href="@{/carros/lista}">Voltar</a>
+    <section class="layout-content" layout:fragment="corpo">
+      <nav class="navbar navbar-expand-md bg-light">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <i class="oi oi-caret-right"></i>
+              <span th:text="#{carro.cadastrar.label}"></span>
+            </li>
+          </ul>
+          <a
+            class="btn btn-primary btn-md"
+            th:href="@{/carros/lista}"
+            role="button"
+          >
+            <span
+              class="oi oi-spreadsheet"
+              title="Listar"
+              aria-hidden="true"
+            ></span>
+            <span th:text="#{carro.listar.label}"></span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="container" id="cadastro">
+        <div th:replace="~{fragments/alert}"></div>
+        <form th:action="@{/carros/salvar}" th:object="${carro}" method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Marca:</label>
+              <input type="text" class="form-control" th:field="*{marca}" />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Modelo:</label>
+              <input type="text" class="form-control" th:field="*{modelo}" />
+            </div>
+            <div class="form-group col-md-2">
+              <label>Ano:</label>
+              <input type="number" class="form-control" th:field="*{ano}" />
+            </div>
+            <div class="form-group col-md-2">
+              <label>Cor:</label>
+              <input type="text" class="form-control" th:field="*{cor}" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label>Preço:</label>
+              <input
+                type="number"
+                step="0.01"
+                class="form-control"
+                th:field="*{preco}"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label>Quilometragem:</label>
+              <input
+                type="number"
+                class="form-control"
+                th:field="*{quilometragem}"
+              />
+            </div>
+            <div class="form-group col-md-2">
+              <label>Câmbio:</label>
+              <input type="text" class="form-control" th:field="*{cambio}" />
+            </div>
+            <div class="form-group col-md-2">
+              <label>Combustível:</label>
+              <input
+                type="text"
+                class="form-control"
+                th:field="*{combustivel}"
+              />
+            </div>
+            <div class="form-group col-md-2">
+              <label>Placa:</label>
+              <input type="text" class="form-control" th:field="*{placa}" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label>Descrição:</label>
+              <input type="text" class="form-control" th:field="*{descricao}" />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Anunciante:</label>
+              <select class="form-control" th:field="*{anunciante}" required>
+                <option
+                  th:each="anunciante : ${anunciantes}"
+                  th:value="${anunciante.id}"
+                  th:text="${anunciante.nome}"
+                ></option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

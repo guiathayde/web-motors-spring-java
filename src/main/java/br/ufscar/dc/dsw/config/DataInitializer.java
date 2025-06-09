@@ -33,7 +33,7 @@ public class DataInitializer implements CommandLineRunner {
             a2.setNome("AutoCar Ltda");
             a2.setEmail("contato@autocar.com");
             a2.setTelefone("1133334444");
-            a2.setCpf("12.345.678/0001-00");
+            a2.setCpf("987.654.321-00");
             a2.setEndereco("Av. Central, 456");
             a2.setTipoPessoa("Jurídica");
             a2.setDataCadastro(LocalDate.now());

@@ -1,15 +1,14 @@
 package br.ufscar.dc.dsw.controller;
 
 import br.ufscar.dc.dsw.domain.Carro;
-import br.ufscar.dc.dsw.domain.Anunciante;
 import br.ufscar.dc.dsw.service.spec.ICarroService;
+import jakarta.validation.Valid;
 import br.ufscar.dc.dsw.service.spec.IAnuncianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/carros")

@@ -1,32 +1,85 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{layout}">
   <head>
-    <title>Cadastro de Anunciante</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Cadastro de Anunciante</h1>
-    <form
-      th:action="@{/anunciantes/salvar}"
-      th:object="${anunciante}"
-      method="post"
-    >
-      <label>Nome:</label>
-      <input type="text" th:field="*{nome}" /> <br />
-      <label>Email:</label>
-      <input type="email" th:field="*{email}" /> <br />
-      <label>Telefone:</label>
-      <input type="text" th:field="*{telefone}" /> <br />
-      <label>CPF:</label>
-      <input type="text" th:field="*{cpf}" /> <br />
-      <label>Endereço:</label>
-      <input type="text" th:field="*{endereco}" /> <br />
-      <label>Tipo Pessoa:</label>
-      <input type="text" th:field="*{tipoPessoa}" /> <br />
-      <label>Data Cadastro:</label>
-      <input type="date" th:field="*{dataCadastro}" /> <br />
-      <button type="submit">Salvar</button>
-    </form>
-    <a th:href="@{/anunciantes/lista}">Voltar</a>
+    <section class="layout-content" layout:fragment="corpo">
+      <nav class="navbar navbar-expand-md bg-light">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <i class="oi oi-caret-right"></i>
+              <span th:text="#{anunciante.cadastrar.label}"></span>
+            </li>
+          </ul>
+          <a
+            class="btn btn-primary btn-md"
+            th:href="@{/anunciantes/lista}"
+            role="button"
+          >
+            <span
+              class="oi oi-spreadsheet"
+              title="Listar"
+              aria-hidden="true"
+            ></span>
+            <span th:text="#{anunciante.listar.label}"></span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="container" id="cadastro">
+        <div th:replace="~{fragments/alert}"></div>
+        <form
+          th:action="@{/anunciantes/salvar}"
+          th:object="${anunciante}"
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Nome:</label>
+              <input type="text" class="form-control" th:field="*{nome}" />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Email:</label>
+              <input type="email" class="form-control" th:field="*{email}" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Telefone:</label>
+              <input type="text" class="form-control" th:field="*{telefone}" />
+            </div>
+            <div class="form-group col-md-4">
+              <label>CPF:</label>
+              <input type="text" class="form-control" th:field="*{cpf}" />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Tipo Pessoa:</label>
+              <input
+                type="text"
+                class="form-control"
+                th:field="*{tipoPessoa}"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label>Endereço:</label>
+              <input type="text" class="form-control" th:field="*{endereco}" />
+            </div>
+            <div class="form-group col-md-4">
+              <label>Data Cadastro:</label>
+              <input
+                type="date"
+                class="form-control"
+                th:field="*{dataCadastro}"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

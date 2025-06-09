@@ -16,13 +16,13 @@
 		<div sec:authorize="hasRole('ROLE_USER')">
 			<ul class="nav nav-pills">
 				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.compra}"></span></li>
+					th:text="#{sidebar.titulo.carros}"></span></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/compras/cadastrar}"> <i class="oi oi-plus"></i> <span
+					th:href="@{/carros/cadastro}"> <i class="oi oi-plus"></i> <span
 						th:text="#{sidebar.link.cadastrar}"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/compras/listar}"> <i class="oi oi-spreadsheet"></i>
+					th:href="@{/carros/lista}"> <i class="oi oi-spreadsheet"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
 				</a></li>
 			</ul>
@@ -31,19 +31,19 @@
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
 				<li class="nav-item"><span class="nav-link active"
-					th:text="#{sidebar.titulo.editora}"></span></li>
+					th:text="#{sidebar.titulo.anunciantes}"></span></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/editoras/cadastrar}"> <i class="oi oi-plus"></i> <span
+					th:href="@{/anunciantes/cadastro}"> <i class="oi oi-plus"></i> <span
 						th:text="#{sidebar.link.cadastrar}"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/editoras/listar}"> <i class="oi oi-spreadsheet"></i>
+					th:href="@{/anunciantes/lista}"> <i class="oi oi-spreadsheet"></i>
 						<span th:text="#{sidebar.link.listar}"></span>
 				</a></li>
 			</ul>
 		</div>
 
-		<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<!-- <div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
 				<li class="nav-item"><span class="nav-link active"
 					th:text="#{sidebar.titulo.livro}"></span></li>
@@ -56,7 +56,7 @@
 						<span th:text="#{sidebar.link.listar}"></span>
 				</a></li>
 			</ul>
-		</div>
+		</div> -->
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<ul class="nav nav-pills">
