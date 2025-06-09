@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Cadastro de Anunciante</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <h1>Cadastro de Anunciante</h1>
+    <form
+      th:action="@{/anunciantes/salvar}"
+      th:object="${anunciante}"
+      method="post"
+    >
+      <label>Nome:</label>
+      <input type="text" th:field="*{nome}" /> <br />
+      <label>Email:</label>
+      <input type="email" th:field="*{email}" /> <br />
+      <label>Telefone:</label>
+      <input type="text" th:field="*{telefone}" /> <br />
+      <label>CPF:</label>
+      <input type="text" th:field="*{cpf}" /> <br />
+      <label>Endereço:</label>
+      <input type="text" th:field="*{endereco}" /> <br />
+      <label>Tipo Pessoa:</label>
+      <input type="text" th:field="*{tipoPessoa}" /> <br />
+      <label>Data Cadastro:</label>
+      <input type="date" th:field="*{dataCadastro}" /> <br />
+      <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/anunciantes/lista}">Voltar</a>
+  </body>
+</html>

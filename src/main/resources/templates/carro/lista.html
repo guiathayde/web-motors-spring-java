@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Carros</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <h1>Lista de Carros</h1>
+    <a th:href="@{/carros/cadastro}">Novo Carro</a>
+    <table>
+      <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Cor</th>
+        <th>Preço</th>
+        <th>KM</th>
+        <th>Câmbio</th>
+        <th>Combustível</th>
+        <th>Placa</th>
+        <th>Anunciante</th>
+        <th>Ações</th>
+      </tr>
+      <tr th:each="carro : ${carros}">
+        <td th:text="${carro.marca}"></td>
+        <td th:text="${carro.modelo}"></td>
+        <td th:text="${carro.ano}"></td>
+        <td th:text="${carro.cor}"></td>
+        <td th:text="${carro.preco}"></td>
+        <td th:text="${carro.quilometragem}"></td>
+        <td th:text="${carro.cambio}"></td>
+        <td th:text="${carro.combustivel}"></td>
+        <td th:text="${carro.placa}"></td>
+        <td th:text="${carro.anunciante.nome}"></td>
+        <td>
+          <a th:href="@{'/carros/editar/' + ${carro.id}}">Editar</a> |
+          <a th:href="@{'/carros/remover/' + ${carro.id}}">Remover</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

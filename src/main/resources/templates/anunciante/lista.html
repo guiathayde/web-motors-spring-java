@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Anunciantes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <h1>Lista de Anunciantes</h1>
+    <a th:href="@{/anunciantes/cadastro}">Novo Anunciante</a>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>CPF</th>
+        <th>Endereço</th>
+        <th>Tipo</th>
+        <th>Data Cadastro</th>
+        <th>Ações</th>
+      </tr>
+      <tr th:each="anunciante : ${anunciantes}">
+        <td th:text="${anunciante.nome}"></td>
+        <td th:text="${anunciante.email}"></td>
+        <td th:text="${anunciante.telefone}"></td>
+        <td th:text="${anunciante.cpf}"></td>
+        <td th:text="${anunciante.endereco}"></td>
+        <td th:text="${anunciante.tipoPessoa}"></td>
+        <td th:text="${anunciante.dataCadastro}"></td>
+        <td>
+          <a th:href="@{'/anunciantes/editar/' + ${anunciante.id}}">Editar</a> |
+          <a th:href="@{'/anunciantes/remover/' + ${anunciante.id}}">Remover</a>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
